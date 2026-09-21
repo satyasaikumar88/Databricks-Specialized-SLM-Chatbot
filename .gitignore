@@ -1,0 +1,14 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+.cache/
+model/**/*.bin
+model/**/*.safetensors
+!model/qwen2.5-0.5B-databricks-lora/
+!model/qwen2.5-0.5B-databricks-lora/**
+model/qwen2.5-0.5B-databricks-lora/checkpoint-*/
+frontend/node_modules/
+frontend/.next/
+.DS_Store
