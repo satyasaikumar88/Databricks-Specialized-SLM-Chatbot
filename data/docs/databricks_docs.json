@@ -1,0 +1,58 @@
+[
+  {
+    "id": "delta-lake-overview",
+    "title": "Delta Lake",
+    "category": "storage",
+    "source": "https://docs.databricks.com/en/delta/index.html",
+    "content": "Delta Lake is an open storage format that brings ACID transactions to data lakes. It supports schema enforcement, schema evolution, and time travel for data versioning. In Databricks, Delta Lake is commonly used to build lakehouse architectures and simplify analytics workloads. Typical adoption patterns include Bronze, Silver, and Gold layers for raw, curated, and business-ready data."
+  },
+  {
+    "id": "bronze-silver-gold",
+    "title": "Bronze, Silver, and Gold architecture",
+    "category": "lakehouse",
+    "source": "https://docs.databricks.com/en/lakehouse/architecture.html",
+    "content": "In the medallion architecture, Bronze stores raw ingested data with minimal processing, Silver stores validated and cleaned data with business rules applied, and Gold stores curated datasets ready for reporting and machine learning. This pattern helps separate data quality stages while enabling incremental processing and governed analytics."
+  },
+  {
+    "id": "unity-catalog",
+    "title": "Unity Catalog",
+    "category": "governance",
+    "source": "https://docs.databricks.com/en/data-governance/unity-catalog/index.html",
+    "content": "Unity Catalog provides centralized governance across data, AI, and analytics assets in Databricks. It supports fine-grained access control, lineage, data discovery, and cross-workspace governance. Unity Catalog organizes data into catalogs, schemas, and tables and can manage permissions for tables, views, files, models, and ML assets."
+  },
+  {
+    "id": "spark-job-slow",
+    "title": "Why is my Spark job slow?",
+    "category": "troubleshooting",
+    "source": "https://docs.databricks.com/en/optimizations/index.html",
+    "content": "Slow Spark jobs are often caused by skewed partitions, too many small files, missing broadcast joins, expensive shuffles, or inadequate cluster sizing. Databricks performance tuning usually starts with checking stage DAG, spill metrics, shuffle reads, and reading file counts. Use Delta optimizations, partition pruning, and appropriate file sizes to reduce scan and shuffle costs."
+  },
+  {
+    "id": "autoloader",
+    "title": "Auto Loader",
+    "category": "ingestion",
+    "source": "https://docs.databricks.com/en/ingestion/auto-loader/index.html",
+    "content": "Auto Loader is a Databricks ingestion feature for incrementally loading new data from cloud object storage. It scales to large data volumes and can read files from AWS S3, Azure Data Lake Storage, and Google Cloud Storage. It supports schema inference and can integrate with Delta tables to process new files continuously without re-reading historical data."
+  },
+  {
+    "id": "mlflow",
+    "title": "MLflow",
+    "category": "mlops",
+    "source": "https://mlflow.org/docs/latest/index.html",
+    "content": "MLflow is an open-source platform for managing the machine learning lifecycle, including experiments, model packaging, and deployment. On Databricks, MLflow is integrated with notebooks, jobs, and model registry features. Teams use it to log parameters, metrics, and models and to track reproducibility across experiments."
+  },
+  {
+    "id": "databricks-sql",
+    "title": "Databricks SQL",
+    "category": "sql",
+    "source": "https://docs.databricks.com/en/sql/index.html",
+    "content": "Databricks SQL is a serverless analytics experience that allows users to query tables and views from the lakehouse using SQL. It supports object storage tables, Delta tables, and analytics dashboards. It is commonly used by analysts and BI users who need governed access to curated data without writing Spark code."
+  },
+  {
+    "id": "pyspark-delta-table",
+    "title": "Create a Delta table with PySpark",
+    "category": "pyspark",
+    "source": "https://docs.databricks.com/en/delta/quickstart.html",
+    "content": "PySpark code can create a Delta table by writing a DataFrame to a path with the Delta format using df.write.format('delta').mode('overwrite').save('/tmp/delta_table'). A table can then be registered in Spark SQL using CREATE TABLE USING DELTA or reading from the saved path. Delta tables support transactions and versioning features."
+  }
+]
