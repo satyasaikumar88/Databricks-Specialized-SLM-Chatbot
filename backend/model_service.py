@@ -54,7 +54,7 @@ class LocalModelService:
         self.model.to(self.device)
         self.model.eval()
 
-    def generate(self, prompt: str, max_new_tokens: int = 220, temperature: float = 0.7) -> str:
+    def generate(self, prompt: str, max_new_tokens: int = 140, temperature: float = 0.2, top_p: float = 0.9) -> str:
         if self.model is None or self.tokenizer is None:
             raise RuntimeError('Model is not initialized.')
 
@@ -64,11 +64,19 @@ class LocalModelService:
                 **encoded,
                 max_new_tokens=max_new_tokens,
                 temperature=temperature,
+                top_p=top_p,
                 do_sample=(temperature > 0),
+                repetition_penalty=1.08,
                 pad_token_id=self.tokenizer.eos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
             )
         text = self.tokenizer.decode(output[0], skip_special_tokens=True)
-        return text.replace(prompt, '').strip()
+        cleaned = text.replace(prompt, '').strip()
+        if cleaned.startswith('Response style rules:'):
+            cleaned = cleaned.split('Response style rules:', 1)[1].strip()
+        if cleaned.startswith('You are a Databricks Learning Assistant'):
+            cleaned = cleaned.split('You are a Databricks Learning Assistant', 1)[1].strip()
+        return cleaned.strip()
 
     def get_model_info(self) -> dict:
         return {

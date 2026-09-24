@@ -22,6 +22,10 @@ class Settings(BaseSettings):
     frontend_url: str = Field(default='http://localhost:3000')
     hf_home: str = Field(default=str(ROOT_DIR / '.cache' / 'huggingface'))
     hf_token: str | None = Field(default=None)
+    database_path: str = Field(default=str(ROOT_DIR / 'data' / 'users.db'))
+    jwt_secret: str = Field(default='change-this-development-secret')
+    jwt_algorithm: str = Field(default='HS256')
+    access_token_expire_minutes: int = Field(default=480)
 
 
 settings = Settings()
